@@ -20,12 +20,9 @@ import com.mongodb.client.MongoIterable;
 // Fonte: http://zetcode.com/java/mongodb/
 public class MongoUtil {
 
-	@Value("${spring.data.mongodb.uri}")
-    private static String mongoUri;
-	
-	public static MongoClient loadMongoClient() {
-		System.out.println("mongoUri: "+mongoUri);
-		MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
+	public static MongoClient loadMongoClient(String mongoUri) {
+		System.out.println("MongoUtil mongoUri: "+mongoUri);
+		MongoClient mongoClient = MongoClients.create(mongoUri);
 		return mongoClient;
 	}
 	

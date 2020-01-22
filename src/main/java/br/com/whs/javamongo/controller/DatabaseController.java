@@ -23,23 +23,21 @@ import br.com.whs.javamongo.util.MongoUtil;
 @Configuration
 public class DatabaseController {
 	
-	@Value("${spring.application.name}")
+	@Value("${data.mongodb.uri}")
     private String mongoUri;
 	
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
     public List<String> listDatabaseNames() {
 		System.out.println("mongoUri: "+mongoUri);
-		System.out.println(System.getProperty("spring.profiles.active"));
-		System.out.println(System.getProperty("spring.application.name"));
-        return MongoUtil.listDatabaseNames(MongoUtil.loadMongoClient());
+        return MongoUtil.listDatabaseNames(MongoUtil.loadMongoClient(mongoUri));
     }
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody @Valid Map<String,Object> map) {
 		System.out.println("Creating... "+map.get("databaseName"));
-		MongoUtil.loadMongoDatabase(MongoUtil.loadMongoClient(), (String)map.get("databaseName"));
-		MongoClient mc = MongoUtil.loadMongoClient();
+		MongoUtil.loadMongoDatabase(MongoUtil.loadMongoClient(mongoUri), (String)map.get("databaseName"));
+		MongoClient mc = MongoUtil.loadMongoClient(mongoUri);
 		mc.getDatabase((String)map.get("databaseName"));
     }
 	

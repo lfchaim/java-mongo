@@ -12,27 +12,12 @@ logging:
 spring:
   application:
     name: ${APPLICATION_NAME:java-mongo}
-  profiles:
-    active: "dev-local"
+data:
+  mongodb:
+    uri: ${MONGODB_URI:mongodb://localhost:27017}
 
 server:
   port: 8080
 
 api:
   version: v1
-
----
-  
-spring:
-  profiles: "dev-local"
-data:
-  mongodb:
-    uri: "mongodb://localhost:27017"
-
---- 
-
-spring:
-  profiles: "prod"
-data:
-  mongodb:
-    uri: "mongodb://localhost:27017"
