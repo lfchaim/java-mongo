@@ -3,8 +3,8 @@ logging:
   level:
     root: info
     org.springframework: info
-    br.com.kroton: info
-    br.com.kroton.matricula.ms.http: debug
+    br.com.whs.javamongo: info
+    br.com.whs.javamongo.controller: debug
   pattern:
     file: "[%d{ISO8601}] %-5level %-40.40c{1.} : %m%ex%n"
 
