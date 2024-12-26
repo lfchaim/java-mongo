@@ -14,7 +14,7 @@ spring:
     name: ${APPLICATION_NAME:java-mongo}
 data:
   mongodb:
-    uri: ${MONGODB_URI:mongodb://localhost:27017}
+    uri: ${MONGODB_URI:mongodb://root:example@localhost:27017}
 
 server:
   port: 8080

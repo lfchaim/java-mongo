@@ -3,8 +3,8 @@ logging:
   level:
     root: info
     org.springframework: info
-    br.com.kroton: info
-    br.com.kroton.matricula.ms.http: debug
+    br.com.whs.javamongo: info
+    br.com.whs.javamongo.controller: debug
   pattern:
     file: "[%d{ISO8601}] %-5level %-40.40c{1.} : %m%ex%n"
 
@@ -14,7 +14,7 @@ spring:
     name: ${APPLICATION_NAME:java-mongo}
 data:
   mongodb:
-    uri: ${MONGODB_URI:mongodb://localhost:27017}
+    uri: ${MONGODB_URI:mongodb://root:example@localhost:27017}
 
 server:
   port: 8080
